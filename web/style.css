@@ -73,7 +73,7 @@
     border: 1px solid black;
     vertical-align: top;
     width: 20%;
-    background-color: lightcyan;
+    background-color: whitesmoke;
 }
 
 .day_box_select {
@@ -122,4 +122,14 @@
 @-moz-keyframes spinm {
     from { -moz-transform: rotate(0deg);}
     to { -moz-transform: rotate(360deg);}
+}
+
+.event {
+    background-color: white;
+    border-color: black;
+    border-radius: 5px;
+}
+
+.notify {
+    cursor: pointer;
 }

@@ -46,9 +46,8 @@ $(document).ready(function() {
         rightButton.appendChild(rightSpan);
 
         var day_boxes = [];
-
-        // INITIALIZE DAY BOX REFERENCES
-        for (var i = 0; i < 25; i++) {
+        
+        function initBox(i) {
             var element = $("#day_box" + (i + 1));
             
             element[0].hasEvent = true;
@@ -62,16 +61,25 @@ $(document).ready(function() {
             day_boxes.push(element[0]);
         }
 
+        // INITIALIZE DAY BOX REFERENCES
+        for (var i = 0; i < 25; i++) {
+            initBox(i);
+        }
+
         var first_day = day - (date % 7 - 1);
         var box_date = 1;
 
-        if (first_day === 0) {
+        if (first_day === 0) { // SUNDAY = 01
             box_date++;
             first_day++;
-        }
-        
-        for (var col = 0; col < first_day - 1; col++) {
-            day_boxes[col].innerHTML = "";
+        } else if (first_day === 6) { // SATURDAY = 01
+            box_date += 2;
+            first_day = 1;
+        } else {
+            for (var col = 0; col < first_day - 1; col++) {
+                day_boxes[col].innerHTML = "";
+                day_boxes[col].hasEvent = false;
+            }
         }
         
         var selected_date = null;
@@ -95,6 +103,7 @@ $(document).ready(function() {
             for (var col = 1; col < 6; col++) {
                 if (box_date > num_days[month]) {
                     day_boxes[row * 5 + (col - 1)].innerHTML = "";
+                    day_boxes[row * 5 + (col - 1)].hasEvent = false;
                 } else if (box_date < 10) {
                     day_boxes[row * 5 + (col - 1)].innerHTML = "0" + box_date;
                 } else {
@@ -150,7 +159,14 @@ $(document).ready(function() {
         
         leftButton.addEventListener("click", prevMonth);
         
-        var event = new CustomEvent("initialized", {});
+        for (var i = 0; i < 25; i++) {
+            if (day_boxes[i].hasEvent) {
+                day_boxes[i].innerHTML += "<table class='event table'><tr><th>Exams Scheduled...</th></tr></table>";
+                $(day_boxes[i]).css("cursor", "pointer");
+            }
+        }
+        
+        var event = new Event("initialized");
         
         $("#calendar")[0].dispatchEvent(event);
     }

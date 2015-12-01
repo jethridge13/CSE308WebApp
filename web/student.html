@@ -12,12 +12,39 @@
         
         <link rel="shortcut icon" href="">
         <link rel="stylesheet" href="style.css">
+        <script src="student.js"></script>
         <script src="calendar.js"></script>
         <script src="email.js"></script>
     </head>
 
     <body>
         <div class="content">
+            <!-- VIEW EXAM DIALOG -->
+                 
+            <div id="view_exam" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">View Exams</h4>
+                        </div>
+                        
+                        <div class="modal-body" id="view_exam_body">
+                            <!-- EMPTY -->
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button
+                              type="button"
+                              class="btn btn-default"
+                              data-dismiss="modal"
+                              id="create_exam_close"
+                          >Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <header class="logo_bar">
                 <div style="margin-left: auto; margin-right: auto; height: 68px;">
                     <a href="http://www.stonybrook.edu/">
@@ -30,10 +57,12 @@
             </header>
 
             <div class="well well-lg" id="notification_bar" style="height:800px">
+                <h4>Upcoming Exams</h4>
+                <hr>
                 <!-- EXAM NOTIFICATIONS GO HERE -->
             </div>
 
-            <div id="calendar" class="table-responsive">
+            <div id="calendar">
                 <table id="calendar_table" class="table">
                     <tr>
                         <th class="month_header" id="month_header1" colspan="5">
