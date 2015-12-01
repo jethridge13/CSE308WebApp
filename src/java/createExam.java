@@ -39,16 +39,26 @@ public class createExam extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             try {
                 String str = request.getQueryString();
+                System.out.println(str);
                 String beginDate = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+                System.out.println(beginDate);
                 str = str.substring(str.indexOf("&") + 1);
                 String endDate = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
                 str = str.substring(str.indexOf("&") + 1);
+                System.out.println(endDate);
+                System.out.println(str);
                 String section = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
                 str = str.substring(str.indexOf("&") + 1);
+                System.out.println(section);
                 String students = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
                 str = str.substring(str.indexOf("&") + 1);
+                System.out.println(students);
                 String duration = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
                 str = str.substring(str.indexOf("&") + 1);
+                System.out.println(duration);
+                String classID = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+                str = str.substring(str.indexOf("&") + 1);
+                System.out.println(classID);
 
                 int sectionN = Integer.parseInt(section);
                 int dur = Integer.parseInt(duration);
@@ -57,10 +67,10 @@ public class createExam extends HttpServlet {
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                 Date begin = formatter.parse(beginDate);
                 Date end = formatter.parse(endDate);
-                
+
                 Instructor ins = new Instructor("Ins", "Ins", "Ins@stonybrook.edu");
-                
-                ins.requestTest("123", sectionN, dur, new Timestamp(begin.getTime()),
+
+                ins.requestTest(classID, sectionN, dur, new Timestamp(begin.getTime()),
                         new Timestamp(end.getTime()), studentsN, dur);
             } catch (ParseException | SQLException ex) {
                 Logger.getLogger(createExam.class.getName()).log(Level.SEVERE, null, ex);
