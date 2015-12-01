@@ -1,0 +1,125 @@
+@import url("http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
+
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+.logo_bar {
+    height: 68px;
+    top: 0;
+    position: relative;
+    line-height: 68px;
+    display: block;
+    margin-left: auto;
+}
+
+.logo_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#notification_bar {
+    width: 300px;
+    float: left;
+    text-align: center;
+    position: relative;
+    background-color: lightgray;
+    overflow-y: auto;
+}
+
+#calendar {
+    padding: 0px;
+    margin: 0px;
+    top: 0px;
+    margin-top: 0px;
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#calendar_table {
+    width: 100%;
+    height: 800px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.month_header {
+    text-align: center;
+    border: 1px solid black;
+    width: 100%;
+    height: 10%;
+    background-color: grey;
+}
+
+.day_header {
+    height: 10%;
+    text-align: center;
+    border: 1px solid black;
+    width: 20%;
+    background-color: lightsalmon;
+}
+
+.day_box {
+    height: 16%;
+    text-align: left;
+    border: 1px solid black;
+    vertical-align: top;
+    width: 20%;
+    background-color: lightcyan;
+}
+
+.day_box_select {
+    height: 16%;
+    text-align: left;
+    border: 1px solid black;
+    vertical-align: top;
+    width: 20%;
+    background-color: lightgreen;
+}
+
+.calendar_row {
+
+}
+
+.calendar_button_left {
+    float: left;
+}
+
+.calendar_button_right {
+    float: right;
+}
+
+#create_exam_button {
+    background-color: darkred;
+    color: white;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+  
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
+}

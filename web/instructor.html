@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Instructor Dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+        
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="style.css">
+        <script src="instructor.js"></script> <!-- NOTE: THE ORDER OF THESE SCRIPTS MATTERS -->
+        <script src="calendar.js"></script>
+    </head>
+
+    <body>
+        <div class="content">        
+            <div id="create_exam" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Create Exam</h4>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <label>Section:</label>
+                                            <div class='input-group' id='create_exam_section'>
+                                                <input id="create_exam_section_input" type='number' class="form-control" min="1" step="1"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Date Begin:</label>
+                                            <div class='input-group date' id='create_exam_date_begin'>
+                                                <input id="create_exam_date_begin_input" type='text' class="form-control"/>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Date End:</label>
+                                            <div class='input-group date' id='create_exam_date_end'>
+                                                <input id="create_exam_date_end_input" type='text' class="form-control"/>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <button
+                                                class="btn btn-default"
+                                                id="create_exam_submit"
+                                                disabled="disabled"
+                                                value="Submit"
+                                            >
+                                                <span id="create_exam_loading_icon"
+                                                      class="glyphicon glyphicon-refresh">
+                                                </span>
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button
+                              type="button"
+                              class="btn btn-default"
+                              data-dismiss="modal"
+                              id="create_exam_close"
+                          >Close</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <header class="logo_bar">
+                <div style="margin-left: auto; margin-right: auto; height: 68px;">
+                    <a href="http://www.stonybrook.edu/">
+                        <img 
+                            class="logo_img"
+                            src="./stony-brook-university-logo.jpg" alt="Stony Brook University"
+                        >
+                    </a>
+                </div>
+            </header>
+
+            <div class="well well-lg" id="notification_bar" style="height:800px">
+                <button
+                    id="create_exam_button"
+                    type="button"
+                    class="btn btn-lg"
+                    data-toggle="modal"
+                    data-target="#create_exam"
+                >Create Exam</button>
+                <hr>
+            </div>
+
+            <div class="well well-lg" id="calendar">
+                <table id="calendar_table">
+                    <tr>
+                        <th class="month_header" id="month_header1" colspan="5">
+                            Empty
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th class="day_header">
+                            Monday
+                        </th>
+
+                        <th class="day_header">
+                            Tuesday
+                        </th>
+
+                        <th class="day_header">
+                            Wednesday
+                        </th>
+
+                        <th class="day_header">
+                            Thursday
+                        </th>
+
+                        <th class="day_header">
+                            Friday
+                        </th>
+                    </tr>
+
+                    <tr class="calendar_row" id="calendar_row1">
+                        <td class="day_box" id="day_box1">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box2">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box3">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box4">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box5">
+                            Empty
+                        </td>
+                    </tr>
+
+                    <tr class="calendar_row" id="calendar_row2">
+                        <td class="day_box" id="day_box6">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box7">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box8">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box9">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box10">
+                            Empty
+                        </td>
+                    </tr>
+
+                    <tr class="calendar_row" id="calendar_row3">
+                        <td class="day_box" id="day_box11">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box12">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box13">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box14">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box15">
+                            Empty
+                        </td>
+                    </tr>
+
+                    <tr class="calendar_row" id="calendar_row4">
+                        <td class="day_box" id="day_box16">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box17">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box18">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box19">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box20">
+                            Empty
+                        </td>
+                    </tr>
+
+                    <tr class="calendar_row" id="calendar_row5">
+                        <td class="day_box" id="day_box21">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box22">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box23">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box24">
+                            Empty
+                        </td>
+
+                        <td class="day_box" id="day_box25">
+                            Empty
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

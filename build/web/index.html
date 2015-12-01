@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testing Center - Log In</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<link rel ="stylesheet" type="text/css" href="./Stylesheet.css" />-->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="login.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <header id="banner"><img src="stony-brook-university-logo.jpg" alt="Stony Brook Testing Center"></header>
+        <div id="loginFailAlert" class="alert alert-danger fade in">Log In Unsuccessful</div>
+        <div class="container">
+            <!--<form style="margin:0 auto; width:25%">
+                NetID:<br>
+                <input class="loginField" type="text" name="NetID">
+                <br>
+                Password:<br>
+                <input class="loginField" type="password" name="password">
+                <br>
+                <input class="loginField" type="button" name="login" value="Login" onclick="auth(document.getElementsByName('NetID')[0], document.getElementsByName('password')[0]);">
+            </form> -->
+            <form role="form">
+                <div class="form-group">
+                    <label for="NetID">NetID:</label>
+                    <input type="text" class="form-control" name="NetID" id="NetID" placeholder="Enter NetID">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                </div>
+                <button type="button" class="btn btn-default" onclick="login();">Login</button>
+                <script>
+                    function login() {
+                        var xhttp = new XMLHttpRequest();
+                        var netID = document.getElementsByName("NetID")[0].value;
+                        var password = document.getElementsByName("password")[0].value;
+                        console.log(netID);
+                        data.append("name", netID);
+                        data.append("pwd", password);
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                //document.getElementById("demo").innerHTML = xhttp.responseText;
+                                loadPage(xhttp.responseText);
+                            }
+                        };
+                        var url = "newLogin?" + 'name=' + netID + '&pwd=' + password;
+                        xhttp.open("POST", url, true);
+                        xhttp.send('name=' + netID + '&pwd=' + password);
+                    }
+
+                    function demo() {
+                        window.location = "login.jsp";
+                    }
+                </script>
+            </form>
+        </div>
+    </body>
+</html>
