@@ -39,11 +39,10 @@
                         var netID = document.getElementsByName("NetID")[0].value;
                         var password = document.getElementsByName("password")[0].value;
                         console.log(netID);
-                        data.append("name", netID);
-                        data.append("pwd", password);
                         xhttp.onreadystatechange = function () {
                             if (xhttp.readyState == 4 && xhttp.status == 200) {
                                 //document.getElementById("demo").innerHTML = xhttp.responseText;
+                                console.log(xhttp.responseText);
                                 loadPage(xhttp.responseText);
                             }
                         };

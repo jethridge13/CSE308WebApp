@@ -19,12 +19,28 @@ $(document).ready(function(){
         var date_begin = $("#create_exam_date_begin_input").val();
         var date_end = $("#create_exam_date_end_input").val();
         var section = $("#create_exam_section_input").val();
+        var students = $("#create_exam_students_input").val();
+        var duration = $("create_exam_duration_input").val();
         
         submitting = true;
         
         $("#create_exam_submit").prop("disabled", true);
         $("#create_exam_submit").prop("class", "btn btn-default btn-warning");
         $("#create_exam_submit").html("<span id='create_exam_loading_icon' class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Submitting...");
+        createExam()
+        function createExam() {
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                //document.getElementById("demo").innerHTML = xhttp.responseText;
+                            }
+                        };
+                        var url = "createExam?" + 'dateBegin=' + date_begin + 
+                                '&dateEnd=' + date_end + '&section=' + section +
+                                '$students=' + students + '$duration=' + duration;
+                        xhttp.open("POST", url, true);
+                        xhttp.send(url);
+                    }
     });
     
     $("#create_exam_close").click(function(){
