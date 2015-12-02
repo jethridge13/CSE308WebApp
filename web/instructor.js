@@ -20,7 +20,7 @@ $(document).ready(function () {
         var date_end = $("#create_exam_date_end_input").val();
         var section = $("#create_exam_section_input").val();
         var students = $("#create_exam_students_input").val();
-        var duration = $("create_exam_duration_input").val();
+        var duration = $("#create_exam_duration_input").val();
         var classID = $("#create_exam_class_ID_input").val();
 
         submitting = true;
@@ -38,8 +38,8 @@ $(document).ready(function () {
             };
             var url = "createExam?" + 'dateBegin=' + date_begin +
                     '&dateEnd=' + date_end + '&section=' + section +
-                    '$students=' + students + '$duration=' + duration
-                    + '$classID=' + classID;
+                    '&students=' + students + '&duration=' + duration
+                    + '&classID=' + classID + '&Id=' + sessionStorage['ID'];
             xhttp.open("POST", url, true);
             xhttp.send(url);
         }
