@@ -57,21 +57,26 @@ public class createExam extends HttpServlet {
                 str = str.substring(str.indexOf("&") + 1);
                 System.out.println(duration);
                 String classID = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+                System.out.println(classID);
                 str = str.substring(str.indexOf("&") + 1);
+                String profID = str.substring(str.indexOf("=") + 1);
                 System.out.println(classID);
 
                 int sectionN = Integer.parseInt(section);
                 int dur = Integer.parseInt(duration);
                 int studentsN = Integer.parseInt(students);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+                SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
                 Date begin = formatter.parse(beginDate);
                 Date end = formatter.parse(endDate);
+                
 
-                Instructor ins = new Instructor("Ins", "Ins", "Ins@stonybrook.edu");
-
-                ins.requestTest(classID, sectionN, dur, new Timestamp(begin.getTime()),
-                        new Timestamp(end.getTime()), studentsN, dur);
+                Instructor ins = Instructor.getInstructor(profID);
+                
+                System.out.println(begin.getTime());
+                System.out.println(end.getTime());
+                ins.requestTest(classID, sectionN, 1, new Timestamp(begin.getTime()),
+                        new Timestamp(end.getTime()),dur, studentsN);
             } catch (ParseException | SQLException ex) {
                 Logger.getLogger(createExam.class.getName()).log(Level.SEVERE, null, ex);
             }
