@@ -37,6 +37,7 @@
                     function login() {
                         var xhttp = new XMLHttpRequest();
                         var netID = document.getElementsByName("NetID")[0].value;
+                        sessionStorage['ID'] = netID;
                         var password = document.getElementsByName("password")[0].value;
                         console.log(netID);
                         xhttp.onreadystatechange = function () {
